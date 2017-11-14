@@ -6,10 +6,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "start":"npm run build && npm run build-server && npm run start-server",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.config.js --progress --hide-modules",
-    "start-server": "node entry-server.js"
+    "start-server": "node server.js"
   },
   "dependencies": {
     "express": "^4.16.2",
