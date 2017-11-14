@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- use triple mustache for non-HTML-escaped interpolation -->
-  {{{ meta }}}
-  <!-- use double mustache for HTML-escaped interpolation -->
-  <title>{{ title }}</title>
+  <title>Vue Server Side Render</title>
 </head>
 <body>
-    <!--vue-ssr-outlet-->
+    <div id="app"></div> 
+    <script src="dist/build.js"></script>
 </body>
 </html>
