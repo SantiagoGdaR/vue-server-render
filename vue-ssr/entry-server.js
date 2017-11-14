@@ -18,7 +18,7 @@ server.get('*', (req, res) => {
             console.log(err);
             return res.sendStatus(500);
         } else {
-            res.send(index.replace('<div id=app></div>', html));
+            res.send(index.replace('<div id="app"></div>', html));
         };
     });
 });  
