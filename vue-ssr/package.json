@@ -7,11 +7,14 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.config.js --progress --hide-modules",
+    "start-server": "node entry-server.js"
   },
   "dependencies": {
     "express": "^4.16.2",
     "vue": "^2.4.4",
+    "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.3",
     "webpack-merge": "^4.1.1"
   },

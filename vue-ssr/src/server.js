@@ -1,4 +1,4 @@
-import { createApp } from './app.js';
+import { createApp } from './main.js';
 
 export default context => {
     // since there could potentially be asynchronous route hooks or components,

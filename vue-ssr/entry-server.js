@@ -1,35 +1,35 @@
 //express server
-const server = require('express')();
+const express = require('express');
+const server = express();
 const fs = require('fs');
 const path = require('path');
+//obtain bundle
+const bundle = fs.readFileSync(path.join(__dirname, './dist/server.js'), 'utf8')
 //get renderer from vue server renderer
-const renderer = require('vue-server-renderer').createRenderer({
+const renderer = require('vue-server-renderer').createBundleRenderer(bundle, {
     //set template
     template: fs.readFileSync('./index.html', 'utf-8')
 });
-const entryServer = require('./src/entry-server.js');
 
 server.use('/dist', express.static(path.join(__dirname, './dist')));
+
 //start server
 server.get('*', (req, res) => { 
+    //context to use as data source
+    //in the template for interpolation
+    const context = {
+        title: 'Vue JS - Server Render',
+        meta: `
+            <meta description="vuejs server side render">
+        `
+    };
 
-    entryServer({ url: req.url }).then((app) => {    
-        //context to use as data source
-        //in the template for interpolation
-        const context = {
-            title: 'Vue JS - Server Render',
-            meta: `
-                <meta description="vuejs server side render">
-            `
+    renderer.renderToString({}, context, (err, html) => {
+        if (err) {
+            res.status(500).end(err);
+        } else {
+            res.end(html);
         };
-
-        renderer.renderToString(createApp.app, context, (err, html) => {
-            if (err) {
-                res.status(500).end(err);
-            } else {
-                res.end(html);
-            };
-        });
     });
 });  
 
