@@ -10,7 +10,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     devtool: false,
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'entry-server.js',
+        filename: 'server.bundle.js',
         libraryTarget: 'commonjs2'
     },
     externals: Object.keys(require('./package.json').dependencies),
