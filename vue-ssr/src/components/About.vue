@@ -1,13 +1,13 @@
 <template>
     <div>
-        {{ homeText }}
+        {{ aboutText }}
     </div>
 </template>
 <script>
     export default {
         data() {
             return {
-                homeText: 'Home Component'
+                aboutText: 'About Component'
             };
         }
     };

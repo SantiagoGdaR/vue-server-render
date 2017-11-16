@@ -16,7 +16,7 @@ server.use('/dist', express.static(path.join(__dirname, './dist')));
 //start server
 server.get('*', (req, res) => { 
     
-    bundle.default({ url: req.url }).then((createApp) => {    
+    bundle.default({ url: req.url }).then((app) => {    
         //context to use as data source
         //in the template for interpolation
         const context = {
@@ -26,7 +26,7 @@ server.get('*', (req, res) => {
             `
         };
 
-        renderer.renderToString(createApp.app, context, function (err, html) {
+        renderer.renderToString(app, context, function (err, html) {            
             if (err) {
                 console.log(err);
                 return res.sendStatus(500);
