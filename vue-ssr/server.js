@@ -34,6 +34,8 @@ server.get('*', (req, res) => {
                 res.send(html);
             };
         });
+    }, () => {
+        console.log('Error: server error');
     });  
 });  
 
