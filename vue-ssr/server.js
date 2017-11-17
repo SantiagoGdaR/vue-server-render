@@ -26,14 +26,17 @@ server.get('*', (req, res) => {
             `
         };
 
-        renderer.renderToString(app, context, function (err, html) {            
+        renderer.renderToString(app, context, function (err, html) {   
             if (err) {
-                console.log(err);
-                return res.sendStatus(500);
+              if (err.code === 404) {
+                res.status(404).end('Page not found')
+              } else {
+                res.status(500).end('Internal Server Error')
+              }
             } else {
-                res.send(html);
-            };
-        });
+              res.end(html)
+            }
+          });        
     }, (err) => {
         console.log(err);
     });  
